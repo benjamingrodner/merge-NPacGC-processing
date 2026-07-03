@@ -1,0 +1,61 @@
+ID,LookupID,sequencingID,Status,extractionID,SampleID,Cruise,Gradients,Type,project,Dataset,Station,Cast,Replicate,Datetime.local,Datetime.utc,Latitude.dec,Longitude.dec,Depth.m,Filter.um,Volume.L,Treatment,Incubation.time,Notes
+S11C1Surf0.2umA,Morales_polyA,301489,NA,NA,g2-st-am-pa.S11.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-pa,AM,11,1,A,6/6/17 4:21,6/6/17 14:21,36.99983333,-158,15,0.2,10,NA,NA,none
+S11C1Surf0.2umB,Morales_polyA,301471,NA,NA,g2-st-am-pa.S11.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-pa,AM,11,1,B,6/6/17 4:21,6/6/17 14:21,36.99983333,-158,15,0.2,9,NA,NA,none
+S11C1Surf0.2umC,Morales_polyA,301432,NA,NA,g2-st-am-pa.S11.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-pa,AM,11,1,C,6/6/17 4:21,6/6/17 14:21,36.99983333,-158,15,0.2,10,NA,NA,none
+S11C1Surf3umA,Morales_polyA,301469,NA,NA,g2-st-am-pa.S11.C1.3um.A,mgl1704,G2,transect,G2-st-am-pa,AM,11,1,A,6/6/17 4:21,6/6/17 14:21,36.99983333,-158,15,3,10,NA,NA,none
+S11C1Surf3umB,Morales_polyA,301467,NA,NA,g2-st-am-pa.S11.C1.3um.B,mgl1704,G2,transect,G2-st-am-pa,AM,11,1,B,6/6/17 4:21,6/6/17 14:21,36.99983333,-158,15,3,9,NA,NA,none
+S11C1Surf3umC,Morales_polyA,301462,NA,NA,g2-st-am-pa.S11.C1.3um.C,mgl1704,G2,transect,G2-st-am-pa,AM,11,1,C,6/6/17 4:21,6/6/17 14:21,36.99983333,-158,15,3,10,NA,NA,none
+S15C1Surf0.2umA,Morales_polyA,301483,NA,NA,g2-st-am-pa.S15.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-pa,AM,15,1,A,6/9/17 3:31,6/9/17 13:31,34.00016667,-158,15,0.2,9,NA,NA,none
+S15C1Surf0.2umB,Morales_polyA,301445,NA,NA,g2-st-am-pa.S15.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-pa,AM,15,1,B,6/9/17 3:31,6/9/17 13:31,34.00016667,-158,15,0.2,9,NA,NA,none
+S15C1Surf0.2umC,Morales_polyA,301456,NA,NA,g2-st-am-pa.S15.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-pa,AM,15,1,C,6/9/17 3:31,6/9/17 13:31,34.00016667,-158,15,0.2,9,NA,NA,none
+S15C1Surf3umA,Morales_polyA,301482,NA,NA,g2-st-am-pa.S15.C1.3um.A,mgl1704,G2,transect,G2-st-am-pa,AM,15,1,A,6/9/17 3:31,6/9/17 13:31,34.00016667,-158,15,3,9,NA,NA,none
+S15C1Surf3umB,Morales_polyA,301476,NA,NA,g2-st-am-pa.S15.C1.3um.B,mgl1704,G2,transect,G2-st-am-pa,AM,15,1,B,6/9/17 3:31,6/9/17 13:31,34.00016667,-158,15,3,9,NA,NA,none
+S15C1Surf3umC,Morales_polyA,301436,NA,NA,g2-st-am-pa.S15.C1.3um.C,mgl1704,G2,transect,G2-st-am-pa,AM,15,1,C,6/9/17 3:31,6/9/17 13:31,34.00016667,-158,15,3,9,NA,NA,none
+S16C1Surf0.2umA,Morales_polyA,301485,NA,NA,g2-st-am-pa.S16.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-pa,AM,16,1,A,6/9/17 16:02,6/10/17 2:02,32.92883333,-158.0003333,15,0.2,8,NA,NA,T0 of REXP3
+S16C1Surf0.2umB,Morales_polyA,301433,NA,NA,g2-st-am-pa.S16.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-pa,AM,16,1,B,6/9/17 16:02,6/10/17 2:02,32.92883333,-158.0003333,15,0.2,8.5,NA,NA,T0 of REXP3
+S16C1Surf0.2umC,Morales_polyA,301439,NA,NA,g2-st-am-pa.S16.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-pa,AM,16,1,C,6/9/17 16:02,6/10/17 2:02,32.92883333,-158.0003333,15,0.2,8,NA,NA,T0 of REXP3
+S16C1Surf3umA,Morales_polyA,301442,NA,NA,g2-st-am-pa.S16.C1.3um.A,mgl1704,G2,transect,G2-st-am-pa,AM,16,1,A,6/9/17 16:02,6/10/17 2:02,32.92883333,-158.0003333,15,3,8,NA,NA,T0 of REXP3
+S16C1Surf3umB,Morales_polyA,301449,NA,NA,g2-st-am-pa.S16.C1.3um.B,mgl1704,G2,transect,G2-st-am-pa,AM,16,1,B,6/9/17 16:02,6/10/17 2:02,32.92883333,-158.0003333,15,3,8.5,NA,NA,T0 of REXP3
+S16C1Surf3umC,Morales_polyA,301472,NA,NA,g2-st-am-pa.S16.C1.3um.C,mgl1704,G2,transect,G2-st-am-pa,AM,16,1,C,6/9/17 16:02,6/10/17 2:02,32.92883333,-158.0003333,15,3,8,NA,NA,T0 of REXP3
+S17C1Surf0.2umA,Morales_polyA,301453,NA,NA,g2-st-am-pa.S17.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-pa,AM,17,1,A,6/10/17 3:29,6/10/17 13:29,32.00016667,-158,15,0.2,7.2,NA,NA,none
+S17C1Surf0.2umB,Morales_polyA,301479,NA,NA,g2-st-am-pa.S17.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-pa,AM,17,1,B,6/10/17 3:29,6/10/17 13:29,32.00016667,-158,15,0.2,8.5,NA,NA,none
+S17C1Surf0.2umC,Morales_polyA,301473,NA,NA,g2-st-am-pa.S17.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-pa,AM,17,1,C,6/10/17 3:29,6/10/17 13:29,32.00016667,-158,15,0.2,8.2,NA,NA,none
+S17C1Surf3umA,Morales_polyA,301447,NA,NA,g2-st-am-pa.S17.C1.3um.A,mgl1704,G2,transect,G2-st-am-pa,AM,17,1,A,6/10/17 3:29,6/10/17 13:29,32.00016667,-158,15,3,7.2,NA,NA,none
+S17C1Surf3umB,Morales_polyA,301475,NA,NA,g2-st-am-pa.S17.C1.3um.B,mgl1704,G2,transect,G2-st-am-pa,AM,17,1,B,6/10/17 3:29,6/10/17 13:29,32.00016667,-158,15,3,8.5,NA,NA,none
+S17C1Surf3umC,Morales_polyA,301437,NA,NA,g2-st-am-pa.S17.C1.3um.C,mgl1704,G2,transect,G2-st-am-pa,AM,17,1,C,6/10/17 3:29,6/10/17 13:29,32.00016667,-158,15,3,8.2,NA,NA,none
+S18C1Surf0.2umA,Morales_polyA,301450,NA,NA,g2-st-am-pa.S18.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-pa,AM,18,1,A,6/11/17 3:31,6/11/17 13:31,29.582,-158.002,15,0.2,8,NA,NA,none
+S18C1Surf0.2umB,Morales_polyA,301466,NA,NA,g2-st-am-pa.S18.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-pa,AM,18,1,B,6/11/17 3:31,6/11/17 13:31,29.582,-158.002,15,0.2,9,NA,NA,none
+S18C1Surf0.2umC,Morales_polyA,301487,NA,NA,g2-st-am-pa.S18.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-pa,AM,18,1,C,6/11/17 3:31,6/11/17 13:31,29.582,-158.002,15,0.2,9,NA,NA,missing in G2 poly-a selected dataset
+S18C1Surf3umA,Morales_polyA,301455,NA,NA,g2-st-am-pa.S18.C1.3um.A,mgl1704,G2,transect,G2-st-am-pa,AM,18,1,A,6/11/17 3:31,6/11/17 13:31,29.582,-158.002,15,3,8,NA,NA,none
+S18C1Surf3umB,Morales_polyA,301446,NA,NA,g2-st-am-pa.S18.C1.3um.B,mgl1704,G2,transect,G2-st-am-pa,AM,18,1,B,6/11/17 3:31,6/11/17 13:31,29.582,-158.002,15,3,9,NA,NA,none
+S18C1Surf3umC,Morales_polyA,301486,NA,NA,g2-st-am-pa.S18.C1.3um.C,mgl1704,G2,transect,G2-st-am-pa,AM,18,1,C,6/11/17 3:31,6/11/17 13:31,29.582,-158.002,15,3,9,NA,NA,none
+S2C1Surf0.2umA,Morales_polyA,301465,NA,NA,g2-st-am-pa.S2.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-pa,AM,2,1,A,5/29/17 4:26,5/29/17 14:26,25.76833333,-158.0141667,15,0.2,8,NA,NA,none
+S2C1Surf0.2umB,Morales_polyA,301435,NA,NA,g2-st-am-pa.S2.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-pa,AM,2,1,B,5/29/17 4:26,5/29/17 14:26,25.76833333,-158.0141667,15,0.2,8,NA,NA,none
+S2C1Surf0.2umC,Morales_polyA,301441,NA,NA,g2-st-am-pa.S2.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-pa,AM,2,1,C,5/29/17 4:26,5/29/17 14:26,25.76833333,-158.0141667,15,0.2,8,NA,NA,none
+S2C1Surf3umA,Morales_polyA,301444,NA,NA,g2-st-am-pa.S2.C1.3um.A,mgl1704,G2,transect,G2-st-am-pa,AM,2,1,A,5/29/17 4:26,5/29/17 14:26,25.76833333,-158.0141667,15,3,8,NA,NA,none
+S2C1Surf3umB,Morales_polyA,301448,NA,NA,g2-st-am-pa.S2.C1.3um.B,mgl1704,G2,transect,G2-st-am-pa,AM,2,1,B,5/29/17 4:26,5/29/17 14:26,25.76833333,-158.0141667,15,3,8,NA,NA,none
+S2C1Surf3umC,Morales_polyA,301480,NA,NA,g2-st-am-pa.S2.C1.3um.C,mgl1704,G2,transect,G2-st-am-pa,AM,2,1,C,5/29/17 4:26,5/29/17 14:26,25.76833333,-158.0141667,15,3,8,NA,NA,none
+S5C1Surf0.2umA,Morales_polyA,301468,NA,NA,g2-st-am-pa.S5.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-pa,AM,5,1,A,6/1/17 3:26,6/1/17 13:26,36.062,-158.0006667,15,0.2,7,NA,NA,none
+S5C1Surf0.2umB,Morales_polyA,301484,NA,NA,g2-st-am-pa.S5.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-pa,AM,5,1,B,6/1/17 3:26,6/1/17 13:26,36.062,-158.0006667,15,0.2,7,NA,NA,none
+S5C1Surf0.2umC,Morales_polyA,301452,NA,NA,g2-st-am-pa.S5.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-pa,AM,5,1,C,6/1/17 3:26,6/1/17 13:26,36.062,-158.0006667,15,0.2,7,NA,NA,none
+S5C1Surf3umA,Morales_polyA,301481,NA,NA,g2-st-am-pa.S5.C1.3um.A,mgl1704,G2,transect,G2-st-am-pa,AM,5,1,A,6/1/17 3:26,6/1/17 13:26,36.062,-158.0006667,15,3,7,NA,NA,none
+S5C1Surf3umB,Morales_polyA,301451,NA,NA,g2-st-am-pa.S5.C1.3um.B,mgl1704,G2,transect,G2-st-am-pa,AM,5,1,B,6/1/17 3:26,6/1/17 13:26,36.062,-158.0006667,15,3,7,NA,NA,none
+S5C1Surf3umC,Morales_polyA,301458,NA,NA,g2-st-am-pa.S5.C1.3um.C,mgl1704,G2,transect,G2-st-am-pa,AM,5,1,C,6/1/17 3:26,6/1/17 13:26,36.062,-158.0006667,15,3,7,NA,NA,none
+S6C1Surf0.2umA,Morales_polyA,301491,NA,NA,g2-st-am-pa.S6.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-pa,AM,6,1,A,6/2/17 3:28,6/2/17 13:28,39.76333333,-157.9938333,15,0.2,8,NA,NA,none
+S6C1Surf0.2umB,Morales_polyA,301454,NA,NA,g2-st-am-pa.S6.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-pa,AM,6,1,B,6/2/17 3:28,6/2/17 13:28,39.76333333,-157.9938333,15,0.2,7,NA,NA,none
+S6C1Surf0.2umC,Morales_polyA,301470,NA,NA,g2-st-am-pa.S6.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-pa,AM,6,1,C,6/2/17 3:28,6/2/17 13:28,39.76333333,-157.9938333,15,0.2,7.75,NA,NA,none
+S6C1Surf3umA,Morales_polyA,301488,NA,NA,g2-st-am-pa.S6.C1.3um.A,mgl1704,G2,transect,G2-st-am-pa,AM,6,1,A,6/2/17 3:28,6/2/17 13:28,39.76333333,-157.9938333,15,3,8,NA,NA,none
+S6C1Surf3umB,Morales_polyA,301434,NA,NA,g2-st-am-pa.S6.C1.3um.B,mgl1704,G2,transect,G2-st-am-pa,AM,6,1,B,6/2/17 3:28,6/2/17 13:28,39.76333333,-157.9938333,15,3,7,NA,NA,none
+S6C1Surf3umC,Morales_polyA,301440,NA,NA,g2-st-am-pa.S6.C1.3um.C,mgl1704,G2,transect,G2-st-am-pa,AM,6,1,C,6/2/17 3:28,6/2/17 13:28,39.76333333,-157.9938333,15,3,7.75,NA,NA,none
+S7C1Surf0.2umA,Morales_polyA,301461,NA,NA,g2-st-am-pa.S7.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-pa,AM,7,1,A,6/3/17 3:29,6/3/17 13:29,41.41666667,-158,15,0.2,7,NA,NA,none
+S7C1Surf0.2umB,Morales_polyA,301443,NA,NA,g2-st-am-pa.S7.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-pa,AM,7,1,B,6/3/17 3:29,6/3/17 13:29,41.41666667,-158,15,0.2,7.8,NA,NA,none
+S7C1Surf0.2umC,Morales_polyA,301464,NA,NA,g2-st-am-pa.S7.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-pa,AM,7,1,C,6/3/17 3:29,6/3/17 13:29,41.41666667,-158,15,0.2,7,NA,NA,none
+S7C1Surf3umA,Morales_polyA,301438,NA,NA,g2-st-am-pa.S7.C1.3um.A,mgl1704,G2,transect,G2-st-am-pa,AM,7,1,A,6/3/17 3:29,6/3/17 13:29,41.41666667,-158,15,3,7,NA,NA,none
+S7C1Surf3umB,Morales_polyA,301459,NA,NA,g2-st-am-pa.S7.C1.3um.B,mgl1704,G2,transect,G2-st-am-pa,AM,7,1,B,6/3/17 3:29,6/3/17 13:29,41.41666667,-158,15,3,7.8,NA,NA,none
+S7C1Surf3umC,Morales_polyA,301490,NA,NA,g2-st-am-pa.S7.C1.3um.C,mgl1704,G2,transect,G2-st-am-pa,AM,7,1,C,6/3/17 3:29,6/3/17 13:29,41.41666667,-158,15,3,7,NA,NA,none
+S9C1Surf0.2umA,Morales_polyA,301463,NA,NA,g2-st-am-pa.S9.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-pa,AM,9,1,A,6/5/17 3:32,6/5/17 13:32,37.99983333,-158,15,0.2,10,NA,NA,none
+S9C1Surf0.2umB,Morales_polyA,301460,NA,NA,g2-st-am-pa.S9.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-pa,AM,9,1,B,6/5/17 3:32,6/5/17 13:32,37.99983333,-158,15,0.2,10,NA,NA,none
+S9C1Surf0.2umC,Morales_polyA,301477,NA,NA,g2-st-am-pa.S9.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-pa,AM,9,1,C,6/5/17 3:32,6/5/17 13:32,37.99983333,-158,15,0.2,10,NA,NA,none
+S9C1Surf3umA,Morales_polyA,301478,NA,NA,g2-st-am-pa.S9.C1.3um.A,mgl1704,G2,transect,G2-st-am-pa,AM,9,1,A,6/5/17 3:32,6/5/17 13:32,37.99983333,-158,15,3,10,NA,NA,none
+S9C1Surf3umB,Morales_polyA,301457,NA,NA,g2-st-am-pa.S9.C1.3um.B,mgl1704,G2,transect,G2-st-am-pa,AM,9,1,B,6/5/17 3:32,6/5/17 13:32,37.99983333,-158,15,3,10,NA,NA,none
+S9C1Surf3umC,Morales_polyA,301474,NA,NA,g2-st-am-pa.S9.C1.3um.C,mgl1704,G2,transect,G2-st-am-pa,AM,9,1,C,6/5/17 3:32,6/5/17 13:32,37.99983333,-158,15,3,10,NA,NA,none

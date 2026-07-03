@@ -1,0 +1,53 @@
+input_table: file_table-annotations.csv
+file_tab_meta: file_table-metadata.csv
+
+dir_metadata: resources/metadata_NPacGC_v2
+dir_tar_names: resources/tar_names
+dir_norm: resources/normalization_factors
+dir_kallisto_names: resources/batch_meta_kallisto_names
+# input_table: file_table.test.csv
+dir_out: results
+XDG_DATA_HOME: /scratch/bgrodner/Resources  # Dir to write the ncbitaxa database (written into 'ete' added to path)
+                # Leave empty to indicate the current execution directory 
+path_repository: workkflow
+
+path_tarnames: .
+
+batches_to_run: ['G1NS','G2NS','G3NS']
+
+keys_kallisto: 
+  join: target_id
+  counts: est_counts
+
+dict_batch_exps:
+  'G2PA': ['G2PA.DCM','G2PA.RR']
+  'G2NS': ['G2NS.DCM','G2NS.RR']
+
+cols_diamond: ['target_id','taxid','eval'] # assign cols to diamond,
+
+keys_diamond: 
+  join: target_id
+  taxid: taxid
+
+cols_lin: [
+  'domain',
+  'kingdom',
+  'phylum',
+  'class',
+  'order',
+  'family',
+  'genus',
+  'species'
+]
+
+
+# keys_kofamscan: 
+#   join: aa_id
+#   to_enum: ['KO']
+#   others_to_keep: ['score']
+# cols_kofamscan: [
+#   "","X","target_id","KO","thrshld","score","E-value","KO_definition"
+# ] # must include 'target_id' and 'KO'
+
+
+

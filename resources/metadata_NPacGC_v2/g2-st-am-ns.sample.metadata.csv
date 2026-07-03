@@ -1,0 +1,61 @@
+ID,LookupID,sequencingID,Status,extractionID,SampleID,Cruise,Gradients,Type,project,Dataset,Station,Cast,Replicate,Datetime.local,Datetime.utc,Latitude.dec,Longitude.dec,Depth.m,Filter.um,Volume.L,Treatment,Incubation.time,Notes
+S11C1Surf0.2umA,3690_Morales_60plex_depletion,301429,NA,NA,g2-st-am-ns.S11.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-ns,AM,11,1,A,6/6/17 4:21,6/6/17 14:21,36.99983333,-158,15,0.2,10,NA,NA,none
+S11C1Surf0.2umB,3690_Morales_60plex_depletion,301411,NA,NA,g2-st-am-ns.S11.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-ns,AM,11,1,B,6/6/17 4:21,6/6/17 14:21,36.99983333,-158,15,0.2,9,NA,NA,none
+S11C1Surf0.2umC,3690_Morales_60plex_depletion,301372,NA,NA,g2-st-am-ns.S11.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-ns,AM,11,1,C,6/6/17 4:21,6/6/17 14:21,36.99983333,-158,15,0.2,10,NA,NA,none
+S11C1Surf3umA,3690_Morales_60plex_depletion,301409,NA,NA,g2-st-am-ns.S11.C1.3um.A,mgl1704,G2,transect,G2-st-am-ns,AM,11,1,A,6/6/17 4:21,6/6/17 14:21,36.99983333,-158,15,3,10,NA,NA,none
+S11C1Surf3umB,3690_Morales_60plex_depletion,301407,NA,NA,g2-st-am-ns.S11.C1.3um.B,mgl1704,G2,transect,G2-st-am-ns,AM,11,1,B,6/6/17 4:21,6/6/17 14:21,36.99983333,-158,15,3,9,NA,NA,none
+S11C1Surf3umC,3690_Morales_60plex_depletion,301402,NA,NA,g2-st-am-ns.S11.C1.3um.C,mgl1704,G2,transect,G2-st-am-ns,AM,11,1,C,6/6/17 4:21,6/6/17 14:21,36.99983333,-158,15,3,10,NA,NA,none
+S15C1Surf0.2umA,3690_Morales_60plex_depletion,301423,NA,NA,g2-st-am-ns.S15.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-ns,AM,15,1,A,6/9/17 3:31,6/9/17 13:31,34.00016667,-158,15,0.2,9,NA,NA,none
+S15C1Surf0.2umB,3690_Morales_60plex_depletion,301385,NA,NA,g2-st-am-ns.S15.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-ns,AM,15,1,B,6/9/17 3:31,6/9/17 13:31,34.00016667,-158,15,0.2,9,NA,NA,none
+S15C1Surf0.2umC,3690_Morales_60plex_depletion,301396,NA,NA,g2-st-am-ns.S15.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-ns,AM,15,1,C,6/9/17 3:31,6/9/17 13:31,34.00016667,-158,15,0.2,9,NA,NA,none
+S15C1Surf3umA,3690_Morales_60plex_depletion,301422,NA,NA,g2-st-am-ns.S15.C1.3um.A,mgl1704,G2,transect,G2-st-am-ns,AM,15,1,A,6/9/17 3:31,6/9/17 13:31,34.00016667,-158,15,3,9,NA,NA,none
+S15C1Surf3umB,3690_Morales_60plex_depletion,301416,NA,NA,g2-st-am-ns.S15.C1.3um.B,mgl1704,G2,transect,G2-st-am-ns,AM,15,1,B,6/9/17 3:31,6/9/17 13:31,34.00016667,-158,15,3,9,NA,NA,none
+S15C1Surf3umC,3690_Morales_60plex_depletion,301376,NA,NA,g2-st-am-ns.S15.C1.3um.C,mgl1704,G2,transect,G2-st-am-ns,AM,15,1,C,6/9/17 3:31,6/9/17 13:31,34.00016667,-158,15,3,9,NA,NA,none
+S16C1Surf0.2umA,3690_Morales_60plex_depletion,301425,NA,NA,g2-st-am-ns.S16.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-ns,AM,16,1,A,6/9/17 16:02,6/10/17 2:02,32.92883333,-158.0003333,15,0.2,8,NA,NA,T0 of REXP3
+S16C1Surf0.2umB,3690_Morales_60plex_depletion,301373,NA,NA,g2-st-am-ns.S16.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-ns,AM,16,1,B,6/9/17 16:02,6/10/17 2:02,32.92883333,-158.0003333,15,0.2,8.5,NA,NA,T0 of REXP3
+S16C1Surf0.2umC,3690_Morales_60plex_depletion,301379,NA,NA,g2-st-am-ns.S16.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-ns,AM,16,1,C,6/9/17 16:02,6/10/17 2:02,32.92883333,-158.0003333,15,0.2,8,NA,NA,T0 of REXP3
+S16C1Surf3umA,3690_Morales_60plex_depletion,301382,NA,NA,g2-st-am-ns.S16.C1.3um.A,mgl1704,G2,transect,G2-st-am-ns,AM,16,1,A,6/9/17 16:02,6/10/17 2:02,32.92883333,-158.0003333,15,3,8,NA,NA,T0 of REXP3
+S16C1Surf3umB,3690_Morales_60plex_depletion,301389,NA,NA,g2-st-am-ns.S16.C1.3um.B,mgl1704,G2,transect,G2-st-am-ns,AM,16,1,B,6/9/17 16:02,6/10/17 2:02,32.92883333,-158.0003333,15,3,8.5,NA,NA,T0 of REXP3
+S16C1Surf3umC,3690_Morales_60plex_depletion,301412,NA,NA,g2-st-am-ns.S16.C1.3um.C,mgl1704,G2,transect,G2-st-am-ns,AM,16,1,C,6/9/17 16:02,6/10/17 2:02,32.92883333,-158.0003333,15,3,8,NA,NA,T0 of REXP3
+S17C1Surf0.2umA,3690_Morales_60plex_depletion,301393,NA,NA,g2-st-am-ns.S17.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-ns,AM,17,1,A,6/10/17 3:29,6/10/17 13:29,32.00016667,-158,15,0.2,7.2,NA,NA,none
+S17C1Surf0.2umB,3690_Morales_60plex_depletion,301419,NA,NA,g2-st-am-ns.S17.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-ns,AM,17,1,B,6/10/17 3:29,6/10/17 13:29,32.00016667,-158,15,0.2,8.5,NA,NA,none
+S17C1Surf0.2umC,3690_Morales_60plex_depletion,301413,NA,NA,g2-st-am-ns.S17.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-ns,AM,17,1,C,6/10/17 3:29,6/10/17 13:29,32.00016667,-158,15,0.2,8.2,NA,NA,none
+S17C1Surf3umA,3690_Morales_60plex_depletion,301387,NA,NA,g2-st-am-ns.S17.C1.3um.A,mgl1704,G2,transect,G2-st-am-ns,AM,17,1,A,6/10/17 3:29,6/10/17 13:29,32.00016667,-158,15,3,7.2,NA,NA,none
+S17C1Surf3umB,3690_Morales_60plex_depletion,301415,NA,NA,g2-st-am-ns.S17.C1.3um.B,mgl1704,G2,transect,G2-st-am-ns,AM,17,1,B,6/10/17 3:29,6/10/17 13:29,32.00016667,-158,15,3,8.5,NA,NA,none
+S17C1Surf3umC,3690_Morales_60plex_depletion,301377,NA,NA,g2-st-am-ns.S17.C1.3um.C,mgl1704,G2,transect,G2-st-am-ns,AM,17,1,C,6/10/17 3:29,6/10/17 13:29,32.00016667,-158,15,3,8.2,NA,NA,none
+S18C1Surf0.2umA,3690_Morales_60plex_depletion,301390,NA,NA,g2-st-am-ns.S18.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-ns,AM,18,1,A,6/11/17 3:31,6/11/17 13:31,29.582,-158.002,15,0.2,8,NA,NA,none
+S18C1Surf0.2umB,3690_Morales_60plex_depletion,301406,NA,NA,g2-st-am-ns.S18.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-ns,AM,18,1,B,6/11/17 3:31,6/11/17 13:31,29.582,-158.002,15,0.2,9,NA,NA,none
+S18C1Surf0.2umC,3690_Morales_60plex_depletion,301427,NA,NA,g2-st-am-ns.S18.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-ns,AM,18,1,C,6/11/17 3:31,6/11/17 13:31,29.582,-158.002,15,0.2,9,NA,NA,missing in G2 poly-a selected dataset
+S18C1Surf3umA,3690_Morales_60plex_depletion,301395,NA,NA,g2-st-am-ns.S18.C1.3um.A,mgl1704,G2,transect,G2-st-am-ns,AM,18,1,A,6/11/17 3:31,6/11/17 13:31,29.582,-158.002,15,3,8,NA,NA,none
+S18C1Surf3umB,3690_Morales_60plex_depletion,301386,NA,NA,g2-st-am-ns.S18.C1.3um.B,mgl1704,G2,transect,G2-st-am-ns,AM,18,1,B,6/11/17 3:31,6/11/17 13:31,29.582,-158.002,15,3,9,NA,NA,none
+S18C1Surf3umC,3690_Morales_60plex_depletion,301426,NA,NA,g2-st-am-ns.S18.C1.3um.C,mgl1704,G2,transect,G2-st-am-ns,AM,18,1,C,6/11/17 3:31,6/11/17 13:31,29.582,-158.002,15,3,9,NA,NA,none
+S2C1Surf0.2umA,3690_Morales_60plex_depletion,301405,NA,NA,g2-st-am-ns.S2.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-ns,AM,2,1,A,5/29/17 4:26,5/29/17 14:26,25.76833333,-158.0141667,15,0.2,8,NA,NA,none
+S2C1Surf0.2umB,3690_Morales_60plex_depletion,301375,NA,NA,g2-st-am-ns.S2.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-ns,AM,2,1,B,5/29/17 4:26,5/29/17 14:26,25.76833333,-158.0141667,15,0.2,8,NA,NA,none
+S2C1Surf0.2umC,3690_Morales_60plex_depletion,301381,NA,NA,g2-st-am-ns.S2.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-ns,AM,2,1,C,5/29/17 4:26,5/29/17 14:26,25.76833333,-158.0141667,15,0.2,8,NA,NA,none
+S2C1Surf3umA,3690_Morales_60plex_depletion,301384,NA,NA,g2-st-am-ns.S2.C1.3um.A,mgl1704,G2,transect,G2-st-am-ns,AM,2,1,A,5/29/17 4:26,5/29/17 14:26,25.76833333,-158.0141667,15,3,8,NA,NA,none
+S2C1Surf3umB,3690_Morales_60plex_depletion,301388,NA,NA,g2-st-am-ns.S2.C1.3um.B,mgl1704,G2,transect,G2-st-am-ns,AM,2,1,B,5/29/17 4:26,5/29/17 14:26,25.76833333,-158.0141667,15,3,8,NA,NA,none
+S2C1Surf3umC,3690_Morales_60plex_depletion,301420,NA,NA,g2-st-am-ns.S2.C1.3um.C,mgl1704,G2,transect,G2-st-am-ns,AM,2,1,C,5/29/17 4:26,5/29/17 14:26,25.76833333,-158.0141667,15,3,8,NA,NA,none
+S5C1Surf0.2umA,3690_Morales_60plex_depletion,301408,NA,NA,g2-st-am-ns.S5.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-ns,AM,5,1,A,6/1/17 3:26,6/1/17 13:26,36.062,-158.0006667,15,0.2,7,NA,NA,none
+S5C1Surf0.2umB,3690_Morales_60plex_depletion,301424,NA,NA,g2-st-am-ns.S5.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-ns,AM,5,1,B,6/1/17 3:26,6/1/17 13:26,36.062,-158.0006667,15,0.2,7,NA,NA,none
+S5C1Surf0.2umC,3690_Morales_60plex_depletion,301392,NA,NA,g2-st-am-ns.S5.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-ns,AM,5,1,C,6/1/17 3:26,6/1/17 13:26,36.062,-158.0006667,15,0.2,7,NA,NA,none
+S5C1Surf3umA,3690_Morales_60plex_depletion,301421,NA,NA,g2-st-am-ns.S5.C1.3um.A,mgl1704,G2,transect,G2-st-am-ns,AM,5,1,A,6/1/17 3:26,6/1/17 13:26,36.062,-158.0006667,15,3,7,NA,NA,none
+S5C1Surf3umB,3690_Morales_60plex_depletion,301391,NA,NA,g2-st-am-ns.S5.C1.3um.B,mgl1704,G2,transect,G2-st-am-ns,AM,5,1,B,6/1/17 3:26,6/1/17 13:26,36.062,-158.0006667,15,3,7,NA,NA,none
+S5C1Surf3umC,3690_Morales_60plex_depletion,301398,NA,NA,g2-st-am-ns.S5.C1.3um.C,mgl1704,G2,transect,G2-st-am-ns,AM,5,1,C,6/1/17 3:26,6/1/17 13:26,36.062,-158.0006667,15,3,7,NA,NA,none
+S6C1Surf0.2umA,3690_Morales_60plex_depletion,301431,NA,NA,g2-st-am-ns.S6.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-ns,AM,6,1,A,6/2/17 3:28,6/2/17 13:28,39.76333333,-157.9938333,15,0.2,8,NA,NA,none
+S6C1Surf0.2umB,3690_Morales_60plex_depletion,301394,NA,NA,g2-st-am-ns.S6.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-ns,AM,6,1,B,6/2/17 3:28,6/2/17 13:28,39.76333333,-157.9938333,15,0.2,7,NA,NA,none
+S6C1Surf0.2umC,3690_Morales_60plex_depletion,301410,NA,NA,g2-st-am-ns.S6.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-ns,AM,6,1,C,6/2/17 3:28,6/2/17 13:28,39.76333333,-157.9938333,15,0.2,7.75,NA,NA,none
+S6C1Surf3umA,3690_Morales_60plex_depletion,301428,NA,NA,g2-st-am-ns.S6.C1.3um.A,mgl1704,G2,transect,G2-st-am-ns,AM,6,1,A,6/2/17 3:28,6/2/17 13:28,39.76333333,-157.9938333,15,3,8,NA,NA,none
+S6C1Surf3umB,3690_Morales_60plex_depletion,301374,NA,NA,g2-st-am-ns.S6.C1.3um.B,mgl1704,G2,transect,G2-st-am-ns,AM,6,1,B,6/2/17 3:28,6/2/17 13:28,39.76333333,-157.9938333,15,3,7,NA,NA,none
+S6C1Surf3umC,3690_Morales_60plex_depletion,301380,NA,NA,g2-st-am-ns.S6.C1.3um.C,mgl1704,G2,transect,G2-st-am-ns,AM,6,1,C,6/2/17 3:28,6/2/17 13:28,39.76333333,-157.9938333,15,3,7.75,NA,NA,none
+S7C1Surf0.2umA,3690_Morales_60plex_depletion,301401,NA,NA,g2-st-am-ns.S7.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-ns,AM,7,1,A,6/3/17 3:29,6/3/17 13:29,41.41666667,-158,15,0.2,7,NA,NA,none
+S7C1Surf0.2umB,3690_Morales_60plex_depletion,301383,NA,NA,g2-st-am-ns.S7.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-ns,AM,7,1,B,6/3/17 3:29,6/3/17 13:29,41.41666667,-158,15,0.2,7.8,NA,NA,none
+S7C1Surf0.2umC,3690_Morales_60plex_depletion,301404,NA,NA,g2-st-am-ns.S7.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-ns,AM,7,1,C,6/3/17 3:29,6/3/17 13:29,41.41666667,-158,15,0.2,7,NA,NA,none
+S7C1Surf3umA,3690_Morales_60plex_depletion,301378,NA,NA,g2-st-am-ns.S7.C1.3um.A,mgl1704,G2,transect,G2-st-am-ns,AM,7,1,A,6/3/17 3:29,6/3/17 13:29,41.41666667,-158,15,3,7,NA,NA,none
+S7C1Surf3umB,3690_Morales_60plex_depletion,301399,NA,NA,g2-st-am-ns.S7.C1.3um.B,mgl1704,G2,transect,G2-st-am-ns,AM,7,1,B,6/3/17 3:29,6/3/17 13:29,41.41666667,-158,15,3,7.8,NA,NA,none
+S7C1Surf3umC,3690_Morales_60plex_depletion,301430,NA,NA,g2-st-am-ns.S7.C1.3um.C,mgl1704,G2,transect,G2-st-am-ns,AM,7,1,C,6/3/17 3:29,6/3/17 13:29,41.41666667,-158,15,3,7,NA,NA,none
+S9C1Surf0.2umA,3690_Morales_60plex_depletion,301403,NA,NA,g2-st-am-ns.S9.C1.0.2um.A,mgl1704,G2,transect,G2-st-am-ns,AM,9,1,A,6/5/17 3:32,6/5/17 13:32,37.99983333,-158,15,0.2,10,NA,NA,none
+S9C1Surf0.2umB,3690_Morales_60plex_depletion,301400,NA,NA,g2-st-am-ns.S9.C1.0.2um.B,mgl1704,G2,transect,G2-st-am-ns,AM,9,1,B,6/5/17 3:32,6/5/17 13:32,37.99983333,-158,15,0.2,10,NA,NA,none
+S9C1Surf0.2umC,3690_Morales_60plex_depletion,301417,NA,NA,g2-st-am-ns.S9.C1.0.2um.C,mgl1704,G2,transect,G2-st-am-ns,AM,9,1,C,6/5/17 3:32,6/5/17 13:32,37.99983333,-158,15,0.2,10,NA,NA,none
+S9C1Surf3umA,3690_Morales_60plex_depletion,301418,NA,NA,g2-st-am-ns.S9.C1.3um.A,mgl1704,G2,transect,G2-st-am-ns,AM,9,1,A,6/5/17 3:32,6/5/17 13:32,37.99983333,-158,15,3,10,NA,NA,none
+S9C1Surf3umB,3690_Morales_60plex_depletion,301397,NA,NA,g2-st-am-ns.S9.C1.3um.B,mgl1704,G2,transect,G2-st-am-ns,AM,9,1,B,6/5/17 3:32,6/5/17 13:32,37.99983333,-158,15,3,10,NA,NA,none
+S9C1Surf3umC,3690_Morales_60plex_depletion,301414,NA,NA,g2-st-am-ns.S9.C1.3um.C,mgl1704,G2,transect,G2-st-am-ns,AM,9,1,C,6/5/17 3:32,6/5/17 13:32,37.99983333,-158,15,3,10,NA,NA,none

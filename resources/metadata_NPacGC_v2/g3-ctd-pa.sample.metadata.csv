@@ -1,0 +1,25 @@
+"ID","LookupID","sequencingID","Status","extractionID","SampleID","Cruise","Gradients","Type","project","Dataset","Station","Cast","Replicate","Datetime.local","Datetime.utc","Latitude.dec","Longitude.dec","Depth.m","Filter.um","Volume.L","Treatment","Incubation.time","Notes"
+"S4C6 A 15m","armbrust_grc_rnaseq_6",442890,NA,"DP18","g3-ctd-pa.S4.C6.15m.A","km1906","G3","CTD","G3-ctd-pa","15m",4,6,"A",2019-04-16 08:11:00,2019-04-16 18:11:00,41.67,-158.05,15,0.2,7,NA,NA,NA
+"S4C6 A 75m","armbrust_grc_rnaseq_6",442882,NA,"DP9","g3-ctd-pa.S4.C6.75m.A","km1906","G3","CTD","G3-ctd-pa","75m",4,6,"A",2019-04-16 08:00:00,2019-04-16 18:00:00,41.67,-158.05,75,0.2,6.5,NA,NA,NA
+"S4C6 A DCM","armbrust_grc_rnaseq_6",442892,NA,"DP20","g3-ctd-pa.S4.C6.DCM.A","km1906","G3","CTD","G3-ctd-pa","DCM",4,6,"A",2019-04-16 08:03:00,2019-04-16 18:03:00,41.67,-158.05,50,0.2,4.5,NA,NA,NA
+"S4C6 B 15m","armbrust_grc_rnaseq_6",442883,NA,"DP10","g3-ctd-pa.S4.C6.15m.B","km1906","G3","CTD","G3-ctd-pa","15m",4,6,"B",2019-04-16 08:11:00,2019-04-16 18:11:00,41.67,-158.05,15,0.2,7,NA,NA,NA
+"S4C6 B 75m","armbrust_grc_rnaseq_6",442881,NA,"DP8","g3-ctd-pa.S4.C6.75m.B","km1906","G3","CTD","G3-ctd-pa","75m",4,6,"B",2019-04-16 08:00:00,2019-04-16 18:00:00,41.67,-158.05,75,0.2,8,NA,NA,NA
+"S4C6 B DCM","armbrust_grc_rnaseq_6",442885,NA,"DP13","g3-ctd-pa.S4.C6.DCM.B","km1906","G3","CTD","G3-ctd-pa","DCM",4,6,"B",2019-04-16 08:03:00,2019-04-16 18:03:00,41.67,-158.05,50,0.2,6,NA,NA,NA
+"S5C6 125m A","armbrust_grc_rnaseq_6",442878,NA,"DP5","g3-ctd-pa.S5.C8.125m.A","km1906","G3","CTD","G3-ctd-pa","125m",5,8,"A",2019-04-20 07:56:00,2019-04-20 17:56:00,37,-158,125,0.2,9.5,NA,NA,NA
+"S5C6 125m B","armbrust_grc_rnaseq_6",442886,NA,"DP14","g3-ctd-pa.S5.C8.125m.B","km1906","G3","CTD","G3-ctd-pa","125m",5,8,"B",2019-04-20 07:56:00,2019-04-20 17:56:00,37,-158,125,0.2,7,NA,NA,NA
+"S5C6 15m A","armbrust_grc_rnaseq_6",442893,NA,"DP21","g3-ctd-pa.S5.C8.15m.A","km1906","G3","CTD","G3-ctd-pa","15m",5,8,"A",2019-04-20 08:05:00,2019-04-20 18:05:00,37,-158,15,0.2,8,NA,NA,NA
+"S5C6 15m B","armbrust_grc_rnaseq_6",442875,NA,"DP2","g3-ctd-pa.S5.C8.15m.B","km1906","G3","CTD","G3-ctd-pa","15m",5,8,"B",2019-04-20 08:05:00,2019-04-20 18:05:00,37,-158,15,0.2,6.75,NA,NA,NA
+"S5C6 DCM A","armbrust_grc_rnaseq_6",442896,NA,"DP24","g3-ctd-pa.S5.C8.DCM.A","km1906","G3","CTD","G3-ctd-pa","DCM",5,8,"A",2019-04-20 08:00:00,2019-04-20 18:00:00,37,-158,55,0.2,8,NA,NA,NA
+"S5C6 DCM B","armbrust_grc_rnaseq_6",442895,NA,"DP23","g3-ctd-pa.S5.C8.DCM.B","km1906","G3","CTD","G3-ctd-pa","DCM",5,8,"B",2019-04-20 08:00:00,2019-04-20 18:00:00,37,-158,55,0.2,7,NA,NA,NA
+"S6C7 15m A","armbrust_grc_rnaseq_6",442877,NA,"DP4","g3-ctd-pa.S6.C7.15m.A","km1906","G3","CTD","G3-ctd-pa","15m",6,7,"A",2019-04-22 06:44:00,2019-04-22 16:44:00,32.92,-158,15,0.2,5.5,NA,NA,NA
+"S6C7 15m B","armbrust_grc_rnaseq_6",442880,NA,"DP7","g3-ctd-pa.S6.C7.15m.B","km1906","G3","CTD","G3-ctd-pa","15m",6,7,"B",2019-04-22 06:44:00,2019-04-22 16:44:00,32.92,-158,15,0.2,10,NA,NA,NA
+"S6C7 75m A","armbrust_grc_rnaseq_6",442884,NA,"DP11","g3-ctd-pa.S6.C7.75m.A","km1906","G3","CTD","G3-ctd-pa","75m",6,7,"A",2019-04-22 06:40:00,2019-04-22 16:40:00,32.92,-158,75,0.2,7.25,NA,NA,NA
+"S6C7 75m B","armbrust_grc_rnaseq_6",442876,NA,"DP3","g3-ctd-pa.S6.C7.75m.B","km1906","G3","CTD","G3-ctd-pa","75m",6,7,"B",2019-04-22 06:40:00,2019-04-22 16:40:00,32.92,-158,75,0.2,9.5,NA,NA,NA
+"S6C7 DCM A","armbrust_grc_rnaseq_6",442894,NA,"DP22","g3-ctd-pa.S6.C7.DCM.A","km1906","G3","CTD","G3-ctd-pa","DCM",6,7,"A",2019-04-22 06:36:00,2019-04-22 16:36:00,32.92,-158,130,0.2,NA,NA,NA,NA
+"S6C7 DCM B","armbrust_grc_rnaseq_6",442879,NA,"DP6","g3-ctd-pa.S6.C7.DCM.B","km1906","G3","CTD","G3-ctd-pa","DCM",6,7,"B",2019-04-22 06:36:00,2019-04-22 16:36:00,32.92,-158,130,0.2,10,NA,NA,NA
+"S8C2 15m A","armbrust_grc_rnaseq_6",442889,NA,"DP17","g3-ctd-pa.S8.C2.15m.A","km1906","G3","CTD","G3-ctd-pa","15m",8,2,"A",2019-04-24 14:47:00,2019-04-25 00:47:00,42.33,-158,15,0.2,7,NA,NA,NA
+"S8C2 15m B","armbrust_grc_rnaseq_6",442891,NA,"DP19","g3-ctd-pa.S8.C2.15m.B","km1906","G3","CTD","G3-ctd-pa","15m",8,2,"B",2019-04-24 14:47:00,2019-04-25 00:47:00,42.33,-158,15,0.2,7.75,NA,NA,NA
+"S8C2 75m A","armbrust_grc_rnaseq_6",442887,NA,"DP15","g3-ctd-pa.S8.C2.75m.A","km1906","G3","CTD","G3-ctd-pa","75m",8,2,"A",2019-04-24 14:39:00,2019-04-25 00:39:00,42.33,-158,75,0.2,6.25,NA,NA,NA
+"S8C2 75m B","armbrust_grc_rnaseq_6",442897,NA,"DP25","g3-ctd-pa.S8.C2.75m.B","km1906","G3","CTD","G3-ctd-pa","75m",8,2,"B",2019-04-24 14:39:00,2019-04-25 00:39:00,42.33,-158,75,0.2,8,NA,NA,NA
+"S8C2 DCM A","armbrust_grc_rnaseq_6",442888,NA,"DP16","g3-ctd-pa.S8.C2.DCM.A","km1906","G3","CTD","G3-ctd-pa","DCM",8,2,"A",2019-04-24 14:42:00,2019-04-25 00:42:00,42.33,-158,41,0.2,7.25,NA,NA,NA
+"S8C2 DCM B","armbrust_grc_rnaseq_6",442874,NA,"DP1","g3-ctd-pa.S8.C2.DCM.B","km1906","G3","CTD","G3-ctd-pa","DCM",8,2,"B",2019-04-24 14:42:00,2019-04-25 00:42:00,42.33,-158,41,0.2,7.5,NA,NA,NA

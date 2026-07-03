@@ -1,0 +1,94 @@
+#!/usr/bin/env -S snakemake -s
+
+"""
+Pipeline to extract data for a list of taxa from the Armbrust Gradients metaT dataset
+
+"""
+
+# =============================================================================
+# Imports
+# =============================================================================
+
+import os
+import io
+import csv
+import json
+import math
+import gzip
+import ibis
+import glob
+import tarfile
+import fnmatch
+import subprocess
+import pandas as pd
+import pyarrow.csv as pv
+from collections import defaultdict
+os.environ['XDG_DATA_HOME'] = config['XDG_DATA_HOME'] or os.environ['PWD']  # Dir to write the ncbitaxa database (written into 'ete' added to path)
+from ete4 import NCBITaxa
+
+## TEMP
+sys.path.append(config['path_repository'])
+from functions.cl_tree_trim_02 import TreeTrim
+import functions.fn_metat_files as fnf
+
+
+
+# =============================================================================
+# Setup
+# =============================================================================
+
+
+input_table = pd.read_csv(
+    config['input_table'],
+    keep_default_na=False
+)
+
+file_tab_meta = pd.read_csv(
+    config['file_tab_meta'],
+    keep_default_na=False
+)
+
+# # sequence filenames
+# batches = input_table['batch'].values.tolist()
+# dict_batch_fastaname_fnseqs = get_dict_batch_fastaname_fnseqs(batches, input_table)
+
+
+# fmt_all_taxon_estcounts = (
+#     config['snakemake_output_dir'] + '/sample_taxa_estcounts'
+#     + '/{batch}/{batch}-{fn_kallisto}-count_sum.txt'
+# )
+fmt_merged_counts = (config['dir_out'] + '/tmp/merge_counts-{batch}.parquet')
+fmt_tax_lin = (config['dir_out'] + '/tmp/tax_lineage-{batch}.parquet')
+fmt_merged_all = (config['dir_out'] + '/merge_counts_tax_gene-{batch}.parquet')
+fmt_seqs_parq = config['dir_out'] + '/seqs-{batch}.parquet'
+fmt_testfile = config['dir_out'] + '/{batch}_testfile.txt'
+# Scripts
+# sc_get_metat_dict = 'sc_get_metat_dict.py'
+sc_get_column_sum = 'sc.get_column_sum.py'
+sc_get_metat_dict = '../repo-armbrust-metat-search/scripts/sc_get_metat_dict.py'
+
+
+# =============================================================================
+# Rule all output
+# =============================================================================
+
+# fns_all_taxon_estcounts = get_fns_sample(fmt_all_taxon_estcounts, col_check='fn_diamond')
+fns_merged_counts = get_fns_batch(fmt_merged_counts)
+fns_tax_lin = get_fns_batch(fmt_tax_lin)
+fns_merged_all = get_fns_batch(fmt_merged_all)
+fns_seqs_parq = get_fns_batch(fmt_seqs_parq)
+fns_test = get_fns_batch(fmt_testfile)
+
+# =============================================================================
+# Snake rules
+# =============================================================================
+
+rule all:
+    input:
+        fns_merged_all,
+        fns_test,
+        fns_seqs_parq
+
+
+
+

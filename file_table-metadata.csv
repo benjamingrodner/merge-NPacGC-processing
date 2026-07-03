@@ -1,0 +1,11 @@
+batch,fn_metadata,fn_norm_factors,fn_kallisto_names,fn_extra_metadata
+g1-st-am-ns,g1-st-am-ns.sample.metadata.csv,G1NS_SUM_norm_factors.csv,column_names-merge_counts_tax_gene-G1NS-counts.txt,
+g1-st-am-pa,g1-st-am-pa.sample.metadata.csv,G1PA_SUM_norm_factors.csv,column_names-merge_counts_tax_gene-G1PA-counts.txt,
+g2-st-am-ns.ST,g2-st-am-ns.sample.metadata.csv,G2NS_15m_norm_factors.csv,column_names-merge_counts_tax_gene-G2NS.ST-counts.txt,
+g2-st-am-pa,g2-st-am-pa.sample.metadata.csv,G2PA_15m_norm_factors.csv,olumn_names-merge_counts_tax_gene-G2PA.ST-counts.txt,
+g2-ctd-ns,g2-ctd-ns.sample.metadata.csv,G2NS_DCM_norm_factors.csv,column_names-merge_counts_tax_gene-G2NS.DCM-counts.txt,
+g2-ctd-pa,g2-ctd-pa.sample.metadata.csv,G2PA_DCM_norm_factors.csv,column_names-merge_counts_tax_gene-G2PA.DCM-counts.txt,
+g2-inc-ns,g2-inc-ns.sample.metadata.csv,G2NS_RR_DCM_norm_factors.csv,column_names-merge_counts_tax_gene-G2NS.REXP-counts.txt,
+g2-inc-pa,g2-inc-pa.sample.metadata.csv,G2PA_RR_DCM_norm_factors.csv,column_names-merge_counts_tax_gene-G2PA.REXP-counts.txt,
+g3-uw-am-ns,g3-uw-am-ns.sample.metadata.csv,G3NS_underway_norm_factors.csv,column_names-merge_counts_tax_gene-G3NS.UW-counts.txt,resources/metadata_NPacGC_v1/G3UW.NS-metadata.csv
+g3-uw-am-pa,g3-uw-am-pa.sample.metadata.csv,G3PA_underway_dawn_norm_factors.csv,column_names-merge_counts_tax_gene-G3PA.UW-counts.txt,
