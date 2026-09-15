@@ -1,2 +1,7 @@
 jupyter_home
 .local
+.tmp
+.snakemake
+results/
+slurm_logs/
+__pycache__/

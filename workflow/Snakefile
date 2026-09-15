@@ -48,6 +48,9 @@ file_tab_meta = pd.read_csv(
     keep_default_na=False
 )
 
+
+BATCHES_META = file_tab_meta['batch'].values.tolist()
+
 # # sequence filenames
 # batches = input_table['batch'].values.tolist()
 # dict_batch_fastaname_fnseqs = get_dict_batch_fastaname_fnseqs(batches, input_table)
@@ -57,16 +60,33 @@ file_tab_meta = pd.read_csv(
 #     config['snakemake_output_dir'] + '/sample_taxa_estcounts'
 #     + '/{batch}/{batch}-{fn_kallisto}-count_sum.txt'
 # )
-fmt_merged_counts = (config['dir_out'] + '/tmp/merge_counts-{batch}.parquet')
-fmt_tax_lin = (config['dir_out'] + '/tmp/tax_lineage-{batch}.parquet')
-fmt_merged_all = (config['dir_out'] + '/merge_counts_tax_gene-{batch}.parquet')
-fmt_seqs_parq = config['dir_out'] + '/seqs-{batch}.parquet'
-fmt_testfile = config['dir_out'] + '/{batch}_testfile.txt'
+fmt_counts_col_names = (config['dir_out'] + '/tmp/colnames/{batch_meta}-kallisto_colnames.txt') 
+fmt_metadata_batch = (config['dir_out'] + '/tmp/metadata/{batch_meta}-metadata.csv') 
+fn_metadata_merge = (config['dir_out'] + '/metadata/all-metadata.csv') 
+fmt_merged_counts = (config['dir_out'] + '/tmp/merge_counts/{batch}-merge_counts.parquet')
+fmt_tax_lin = (config['dir_out'] + '/tmp/tax_lineage/{batch}-tax_lineage.parquet')
+fmt_merged_all = (config['dir_out'] + '/merge_counts_tax_gene/{batch}-merge_counts_tax_gene.parquet')
+fmt_custom_ann = (config['dir_out'] + '/add_custom_annotations/{batch}-add_custom_annotations.parquet')
+fmt_seqs_parq = config['dir_out'] + '/seqs/{batch}-seqs.parquet'
+fmt_testfile = config['dir_out'] + '/checks/{batch}_testfile.txt'
 # Scripts
 # sc_get_metat_dict = 'sc_get_metat_dict.py'
 sc_get_column_sum = 'sc.get_column_sum.py'
 sc_get_metat_dict = '../repo-armbrust-metat-search/scripts/sc_get_metat_dict.py'
 
+
+
+# =============================================================================
+# Snake rules
+# =============================================================================
+
+include: 'rules/common.smk'
+include: 'rules/get_metadata.smk'
+include: 'rules/merge_estcounts.smk'
+include: 'rules/get_tax_lineage.smk'
+include: 'rules/merge_counts_tax_gene.smk'
+include: 'rules/get_aaseq_parquets.smk'
+include: 'rules/annotate_custom_genes.smk'
 
 # =============================================================================
 # Rule all output
@@ -77,17 +97,18 @@ fns_merged_counts = get_fns_batch(fmt_merged_counts)
 fns_tax_lin = get_fns_batch(fmt_tax_lin)
 fns_merged_all = get_fns_batch(fmt_merged_all)
 fns_seqs_parq = get_fns_batch(fmt_seqs_parq)
+fns_custom_ann = get_fns_batch(fmt_custom_ann)
 fns_test = get_fns_batch(fmt_testfile)
-
-# =============================================================================
-# Snake rules
-# =============================================================================
 
 rule all:
     input:
+        # fns_custom_ann,
+        # fn_metadata_merge,
+        # fns_tax_lin,
+        # fns_merged_counts,
         fns_merged_all,
-        fns_test,
-        fns_seqs_parq
+        # fns_test,
+        # fns_seqs_parq,
 
 
 

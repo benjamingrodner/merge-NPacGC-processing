@@ -2,9 +2,30 @@
 # Functions
 # =============================================================================
 
+def get_merged_all_for_meta(batch_meta):
+    batch = get_meta_tab_val(batch_meta, 't')
+    return fmt_merged_all.format(batch=batch)
+
+
+def get_meta_tab_val(batch, typ_key):
+    dict_typkey_coldir = {
+        'm':['fn_metadata',config['dir_metadata']],
+        'n':['fn_norm_factors',config['dir_norm']],
+        'c':['fn_kallisto_names',config['dir_kallisto_names']],
+        'e':['fn_extra_metadata',''],
+        's':['duckdb_search_kallisto_names',''],
+        't':['batch_merge_table',''],
+    }
+    column, d = dict_typkey_coldir[typ_key]
+    d = f'{d}/' if d else ''
+    fn = file_tab_meta.loc[(file_tab_meta.batch == batch), column].values[0]
+    return f'{d}{fn}'
+
+
+
 def get_tar_names(fn_tar, re_tar, batch):
     # Make tar name dir
-    out_dir = config['path_tarnames'] + '/tar_names'
+    out_dir = config['dir_tarnames']
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
     # Make filename

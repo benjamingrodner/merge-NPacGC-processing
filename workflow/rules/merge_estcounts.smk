@@ -1,13 +1,61 @@
 
+# for files where the sample name is stored in the tmp column
+def split_count_file(fn, dir_out, batch):
+    header = 'target_id\tlength\teff_length\test_counts\ttpm|name_file\n'
+    dict_sn_handle = {}
+    
+    os.makedirs(dir_out, exist_ok=True)
+    dict_sn_fn = {}
+    fmt_out = f'{dir_out}/{batch}-kallisto_counts-{{sn}}'
+    
+    dir_done = f'{dir_out}/done'
+    os.makedirs(dir_done, exist_ok=True)
+    fn_done = f'{dir_done}/{batch}-split_done.txt'
+    
+    if not os.path.exists(fn_done):
+        print('Splitting file:', batch)
+        i = 0
+        with gzip.open(fn, 'rt') as f:
+            for line in f:
+                l = line.strip().split('\t')
+                if (l[0] != 'target_id') and (len(l[0]) > 0):
+                    try:
+                        sn = l[4].split('|')[1]
+                    except:
+                        raise IndexError(f'Line = {line}\nl = {l}')
+                    fn_out = fmt_out.format(sn=sn)
+                    handle = dict_sn_handle.get(sn)
+                    if handle is None:
+                        handle = open(fn_out, 'w')
+                        handle.write(header)
+                        dict_sn_handle[sn] = handle
+                    else:
+                        handle = dict_sn_handle[sn]
+                    handle.write(line)
+                i += 1
+                if i % 1e6 == 0:
+                    print(f'Lines read: {i}', end='\r')
+
+        for sn, handle in dict_sn_handle.items():
+            handle.close()
+        # done file
+        with open(fn_done, "w") as f:
+            f.write('done')
+    else:
+        print('File already split:', batch)
+
+    return fmt_out.format(sn='*'), fn_done
+
+
 rule merge_estcounts:
     input:
         fns_counts = lambda w: get_fns_counts(w.batch)
     output:
-        fn_merged_counts = temp(fmt_merged_counts) 
+        fn_merged_counts = fmt_merged_counts
         # fn_all_taxon_estcounts = fmt_all_taxon_estcounts
-    threads: 42
+    threads: 32
     resources:
-        mem="700G"
+        mem="200G"
     run:
         # Set up ibis
         con = ibis.duckdb.connect(memory_limit=resources.mem, threads=threads)
@@ -21,7 +69,7 @@ rule merge_estcounts:
         batch = wildcards.batch
         # Get a list of files and whether or not the counts are merged yet
         mergedyn = get_input_table_value(
-            batch, input_table, 'merged_kallisto_yn'
+            batch, input_table, 'merged_kallisto_ynm'
         )
         dict_fnc_mergedyn = {fnc: mergedyn for fnc in input.fns_counts}
         # Get a list of tarnames
@@ -37,12 +85,23 @@ rule merge_estcounts:
 
         # Add experiment files that are mapped to the batch
         bexps = config['dict_batch_exps'].get(batch)
+        split_counts_fns = []
         if bexps is not None:
             for batchexp in bexps:
                 row = get_input_table_row(batchexp, input_table)
                 fnc_glob = f"{row['dir_kallisto']}/{row['glob_kallisto']}"
                 for fnc in glob.glob(fnc_glob):
-                    dict_fnc_mergedyn[fnc] = row['merged_kallisto_yn']
+                    ynm = row['merged_kallisto_ynm']
+                    if ynm == 'm': # for files that need splitting
+                        fncg, fn_split_done = split_count_file(
+                            fnc, config['split_count_dir'], batchexp
+                        )
+                        split_counts_fns.append(fn_split_done)
+                        for fncs in glob.glob(fncg):
+                            split_counts_fns.append(fncs)
+                            dict_fnc_mergedyn[fncs] = 'n'
+                    else:
+                        dict_fnc_mergedyn[fnc] = ynm
                     # Check if tarball and add tarnames
                     if '.tar.gz' in fnc:
                         re_tar = get_input_table_value(
@@ -123,3 +182,7 @@ rule merge_estcounts:
                 )
         selected = t_merged.select(cols_select)
         selected.to_parquet(output.fn_merged_counts)
+        
+        # Remove temp kallisto split
+        for fn in split_counts_fns:
+            os.remove(fn)

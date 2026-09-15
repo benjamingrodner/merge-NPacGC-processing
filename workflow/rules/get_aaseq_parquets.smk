@@ -3,9 +3,9 @@ rule get_aaseq_parquets:
         fns_seqs = lambda w: get_fnseqs(w.batch, input_table)
     output:
         fn_seqs_parq = fmt_seqs_parq
-    threads: 14
+    threads: 8
     resources:
-        mem="225G"
+        mem="300"
     shell:
         """
         # From chris' pipeline

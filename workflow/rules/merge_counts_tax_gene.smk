@@ -1,3 +1,29 @@
+from typing import List, Optional
+
+
+
+def get_metric_col_lists(columns: List[str]):
+    evalue_col = None
+    if "eval_ko" in columns:
+        evalue_col = "eval_ko"
+
+    score_col = "score" if "score" in columns else None
+
+    if (evalue_col is not None) and (score_col is not None):
+        sort_cols = [evalue_col, score_col]
+        ascending = [True, False]
+    elif (evalue_col is not None):
+        sort_cols = [evalue_col]
+        ascending = [True]
+    elif (score_col is not None):
+        sort_cols = [score_col]
+        ascending = [False]
+    else:
+        raise ValueError(f"Either 'eval_ko' or 'score' must be a column in the data table, neither is present.")
+    
+    return sort_cols, ascending
+
+
 rule merge_counts_tax_gene:
     input:
         fn_merged_counts = fmt_merged_counts,
@@ -5,9 +31,9 @@ rule merge_counts_tax_gene:
         fn_genes = lambda w: get_fn_genes(w.batch),
     output:
         fn_merged_all = fmt_merged_all
-    threads: 21
+    threads: 8
     resources:
-        mem="350G"
+        mem="50G"
     run:
         batch = wildcards.batch
         join_key_counts = config['keys_kallisto']['join']
@@ -29,13 +55,14 @@ rule merge_counts_tax_gene:
         )
         # Custom load and filter for NS kofam files concatenated with column names intact
         types_ko = {}
-        if re.search(r'^G\dNS', batch) is not None:
+        regex_ns = r'^g\d.+ns$'
+        if re.search(regex_ns, batch) is not None:
             print(f"\n\n{ibis.__version__}\n\n")
             types_eval = {"kofam_eval": "string"}
             t_genes = ibis.read_csv(input.fn_genes, types=types_eval)
         else:
             t_genes = ibis.read_csv(input.fn_genes) 
-        if re.search(r'^G\dNS', batch) is not None:
+        if re.search(regex_ns, batch) is not None:
             t_genes = t_genes.filter(
                 t_genes['kofam_eval'] != 'E-value'
             ).mutate(
@@ -89,7 +116,7 @@ rule merge_counts_tax_gene:
             batch, input_table, 'colnames_other_ko'
         ).split(',')
         for col in cols_other:
-            sql_cast += f"{col}, "
+            sql_cast += f'"{col}", '
         # Cast columns to enum and subset
         alias_ibis = 'lifetheuniverseandeverything'
         sql_cast += f"FROM {alias_ibis}"
@@ -98,27 +125,32 @@ rule merge_counts_tax_gene:
         # also keep the frame selected name
         t_genes_cat = t_genes_cat.mutate(
             **{
-                'contig_name_6tr': t_genes_cat[join_key_genes],
+                config['keys_kofam']['col_6tr']: t_genes_cat[join_key_genes],
                 join_key_genes: t_genes_cat[join_key_genes].re_replace(r'_\d+$', ''),
             }
         )
+        # Make NS naming like PA naming
+        dict_renames = {}
+        for c, rn in zip(['kofam','kofam_eval','E-value','eval_score'],['KO','eval_ko','eval_ko','score']):
+            if c in t_genes_cat.columns:
+                dict_renames[rn] = c
+        t_genes_cat = t_genes_cat.rename(**dict_renames)
+        # Remove duplicates for join key, selecting frame with best KO score/evalue
+        sort_cols, ascending = get_metric_col_lists(list(t_genes_cat.columns))
+        t_genes_cat = filter_6tr_rows(t_genes_cat, join_key_genes, sort_cols, ascending)
         # Merge genes table
         t_merged = t_merged.join(
             t_genes_cat,
-            predicates=t_counts[join_key_counts] == t_genes_cat[join_key_genes],
+            predicates=t_merged[join_key_counts] == t_genes_cat[join_key_genes],
             how="outer"
         )
         # Select columns and save
         columns_select = list(t_counts.columns) # use the counts join key as the contig column
         for t, k in zip([t_tax, t_genes_cat],[join_key_tax, join_key_genes]):
             for col in t.columns:
-                if col != k: # remove only the join key from the taxa
+                if col not in [k]: # remove only the join key from the taxa
                     columns_select.append(col)
-        dict_renames = {} # Make NS naming like PA naming
-        for c, rn in zip(['kofam','kofam_eval'],['KO','E-value']):
-            if c in t_merged.columns:
-                dict_renames[rn] = c
-        selected = t_merged.select(columns_select).rename(**dict_renames)
+        selected = t_merged.select(columns_select)
         print('Merging counts, taxa lineages, and gene annnotations.')
         selected.to_parquet(output.fn_merged_all)
 

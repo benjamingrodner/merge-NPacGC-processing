@@ -59,14 +59,14 @@ def _parse_station(
         
         keys_counts.append(k)
         keys_norm.append(kn)
-        
+    
     df_meta[COL_KALLISTO_MAP] = keys_counts
-    df_meta['norm_key'] = keys_norm
+    df_meta[col_meta_merge] = keys_norm
     
     # Validation
     _validate_merge(df_meta, df_norm, col_meta_merge, col_norm, ignore_list)
         
-    return df_meta.merge(df_norm, how='left', left_on=col_meta, right_on=col_norm)
+    return df_meta.merge(df_norm, how='left', left_on=col_meta_merge, right_on=col_norm)
 
 def _validate_merge(df_meta: pd.DataFrame, df_norm: pd.DataFrame, mcol: str, ncol: str, ignore_list=[]):
     # --- Validation & Merge (Same as before) ---
@@ -114,7 +114,7 @@ def parse_g1pa(df_meta: pd.DataFrame, df_norm: pd.DataFrame) -> pd.DataFrame:
         s, c, f, r = match.groups()
         s = s.zfill(2)
         if s == '10': c = ''
-        k = f'G1PA.S{s}{c}_{f}.abundance.tsv'
+        k = f'G1PA.S{s}{c}_{f}{r}.abundance.tsv'
         
         f_clean = f.replace('.', '')
         kn = f'S{s}{c}_{f_clean}{r}'
@@ -152,7 +152,8 @@ def parse_g2ns_dcm(df_meta: pd.DataFrame, df_norm: pd.DataFrame) -> pd.DataFrame
     """Parses G2NS DCM metadata and dynamically maps depth from df_meta."""
     df_meta = df_meta.copy()
 
-    mcol = 'extractionID'
+    mcol = 'SampleID'
+    mcol_norm = 'extractionID'
     ncol = 'Sample_ID'
 
     # Target regex pattern
@@ -184,11 +185,11 @@ def parse_g2ns_dcm(df_meta: pd.DataFrame, df_norm: pd.DataFrame) -> pd.DataFrame
 
     # Adjust
     df_norm_adj = df_norm.copy()
-    df_norm_adj.loc[df_norm_adj[ncol] == 'BD63','Sample_ID'] = 'BD60'
+    df_norm_adj.loc[df_norm_adj[ncol] == 'BD63', ncol] = 'BD60'
     
-    _validate_merge(df_meta, df_norm_adj, mcol, ncol)
+    _validate_merge(df_meta, df_norm_adj, mcol_norm, ncol)
         
-    return df_meta.merge(df_norm_adj, how='left', left_on=mcol, right_on=ncol)
+    return df_meta.merge(df_norm_adj, how='left', left_on=mcol_norm, right_on=ncol)
 
 
 def parse_g2ns_rexp(df_meta: pd.DataFrame, df_norm: pd.DataFrame) -> pd.DataFrame:
@@ -210,9 +211,10 @@ def parse_g2ns_rexp(df_meta: pd.DataFrame, df_norm: pd.DataFrame) -> pd.DataFram
         return k, kn
 
     ignore = ['G2.DCM.NS']
+    df_norm = df_norm.rename(columns={'SampleID':'SampleID_norm'})
     return _parse_station(
         df_meta, df_norm, regex, 
-        col_norm='SampleID', key_formatter=formatter, ignore_list=ignore)
+        col_norm='SampleID_norm', key_formatter=formatter, ignore_list=ignore)
 
 def parse_g2pa_dcm(df_meta: pd.DataFrame, df_norm: pd.DataFrame) -> pd.DataFrame:
     df_meta = df_meta.copy()
@@ -220,7 +222,7 @@ def parse_g2pa_dcm(df_meta: pd.DataFrame, df_norm: pd.DataFrame) -> pd.DataFrame
     mcol = 'extractionID'
     ncol = 'Sample_ID'
 
-    keys_counts = [f"G2PA.DCM-kallisto_counts-{sid}.abundance.tsv" 
+    keys_counts = [f"g2-ctd-pa-kallisto_counts-{sid}.abundance.tsv" 
                    for sid in df_meta[mcol]]
         
     df_meta[COL_KALLISTO_MAP] = keys_counts
@@ -238,7 +240,7 @@ def parse_g2pa_rexp(df_meta: pd.DataFrame, df_norm: pd.DataFrame) -> pd.DataFram
     mcol = 'extractionID'
     ncol = 'sample_id'
 
-    keys_counts = [f"G2PA.RR-kallisto_counts-G2PA.{sid}.abundance.tsv" 
+    keys_counts = [f"g2-inc-pa-kallisto_counts-G2PA.{sid}.abundance.tsv" 
                    for sid in df_meta[mcol]]
     df_meta[COL_KALLISTO_MAP] = keys_counts
 
@@ -363,23 +365,138 @@ def parse_g3pa_uw(df_meta: pd.DataFrame, df_norm: pd.DataFrame) -> pd.DataFrame:
     return df_meta.merge(df_norm_adj, how='left', left_on=mcol, right_on=ncol)
 
 
+def parse_g3papm_uw(df_meta: pd.DataFrame, df_norm: pd.DataFrame) -> pd.DataFrame:
+    df_meta = df_meta.copy()
 
+    mcol = 'norm_key'
+    ncol = 'sample_name'
+
+    # Target regex pattern
+    keys_counts = []
+    keys_norm = []
+    
+    for i, row in df_meta.iterrows():
+        si, se, d, f, r = [row[col] for col in ['ID','extractionID','Depth.m','Filter.um','Replicate']]
+        f = str(f).rstrip('.0')
+        s_splt = si.split()
+        if len(s_splt) == 3:
+            s1, s2, _ = s_splt
+            s2 = s2.lstrip('#')
+            s_sam = f'{s1}_{s2}'
+        elif len(s_splt) == 2:
+            s_sam, _ = s_splt
+            s_sam += '_1'
+        else:
+            raise ValueError(f'Alias "{s_splt}" for sample "{si}" cannot be parsed')
+
+        base = f'G3.UW.PA.{s_sam}.{d}m_PM.{f}um.{r}'
+        k = f'{base}.unstranded.abundance.tsv.gz'
+        kn = f'{base}.flash'
+        keys_counts.append(k)
+        keys_norm.append(kn)
+        
+    df_meta[COL_KALLISTO_MAP] = keys_counts
+    df_meta[mcol] = keys_norm
+    
+    # Adjust
+    df_norm_adj = df_norm.copy()
+    # df_norm_adj.loc[df_norm_adj[ncol] == 'BD63','Sample_ID'] = 'BD60'
+    
+    _validate_merge(df_meta, df_norm_adj, mcol, ncol)
+        
+    return df_meta.merge(df_norm_adj, how='left', left_on=mcol, right_on=ncol)
+
+
+def parse_g3diel_uw(df_meta: pd.DataFrame, df_norm: pd.DataFrame) -> pd.DataFrame:
+    df_meta = df_meta.copy()
+
+    mcol = 'norm_key'
+    ncol = 'sample_name'
+
+    # Target regex pattern
+    keys_counts = []
+    keys_norm = []
+    
+    for i, row in df_meta.iterrows():
+        si, se, d, f, r = [row[col] for col in ['ID','extractionID','Depth.m','Filter.um','Replicate']]
+        s, _ = si.split()
+
+        base = f'G3PA.diel.{s}.{r}'
+        k = f'{base}.unstranded.abundance.tsv.gz'
+        kn = f'{base}.flash'
+        keys_counts.append(k)
+        keys_norm.append(kn)
+        
+    df_meta[COL_KALLISTO_MAP] = keys_counts
+    df_meta[mcol] = keys_norm
+    
+    # Adjust
+    df_norm_adj = df_norm.copy()
+    # df_norm_adj.loc[df_norm_adj[ncol] == 'BD63','Sample_ID'] = 'BD60'
+    
+    _validate_merge(df_meta, df_norm_adj, mcol, ncol)
+        
+    return df_meta.merge(df_norm_adj, how='left', left_on=mcol, right_on=ncol)
+
+
+def parse_d1pa(df_meta: pd.DataFrame, df_norm: pd.DataFrame) -> pd.DataFrame:
+    df_meta = df_meta.copy()
+
+    mcol = 'norm_key'
+    ncol = 'sample'
+
+    # Target regex pattern
+    keys_counts = []
+    keys_norm = []
+    
+    for i, row in df_meta.iterrows():
+        si, se, d, f, r = [row[col] for col in ['ID','extractionID','Depth.m','Filter.um','Replicate']]
+        s, _ = si.split()
+
+        k = f'D1PA.S{se}.abundance.tsv'
+        kn = f'{se}'
+        keys_counts.append(k)
+        keys_norm.append(kn)
+        
+    df_meta[COL_KALLISTO_MAP] = keys_counts
+    df_meta[mcol] = keys_norm
+    
+    # Adjust
+    df_norm_adj = df_norm.copy()
+    # df_norm_adj.loc[df_norm_adj[ncol] == 'BD63','Sample_ID'] = 'BD60'
+    
+    _validate_merge(df_meta, df_norm_adj, mcol, ncol)
+        
+    return df_meta.merge(df_norm_adj, how='left', left_on=mcol, right_on=ncol)
 
 # -----------------------------------------------------------------------------
 # Function Registry
 # -----------------------------------------------------------------------------
 # This maps your string keys to the actual Python functions
 FUNCTION_REGISTRY = {
-    "G1NS": parse_g1ns,
-    "G1PA": parse_g1pa,
-    "G2NS.ST": parse_g2ns_st,
-    "G2PA.ST": parse_g2pa_st,
-    "G2NS.DCM": parse_g2ns_dcm,
-    "G2PA.DCM": parse_g2pa_dcm,
-    "G2NS.REXP": parse_g2ns_rexp,
-    "G2PA.REXP": parse_g2pa_rexp,
-    "G3NS.UW": parse_g3ns_uw,
-    "G3PA.UW": parse_g3pa_uw,
+    "g1-st-am-ns": parse_g1ns,
+    "g1-st-am-pa": parse_g1pa,
+    "g2-st-am-ns": parse_g2ns_st,
+    "g2-st-am-pa": parse_g2pa_st,
+    "g2-ctd-ns": parse_g2ns_dcm,
+    "g2-ctd-pa": parse_g2pa_dcm,
+    "g2-inc-ns": parse_g2ns_rexp,
+    "g2-inc-pa": parse_g2pa_rexp,
+    "g3-uw-am-ns": parse_g3ns_uw,
+    "g3-uw-am-pa": parse_g3pa_uw,
+    "g3-uw-pm-pa": parse_g3papm_uw,
+    "g3-diel-pa": parse_g3diel_uw,
+    "d1-st-pa": parse_d1pa,
+    # "G1NS": parse_g1ns,
+    # "G1PA": parse_g1pa,
+    # "G2NS.ST": parse_g2ns_st,
+    # "G2PA.ST": parse_g2pa_st,
+    # "G2NS.DCM": parse_g2ns_dcm,
+    # "G2PA.DCM": parse_g2pa_dcm,
+    # "G2NS.REXP": parse_g2ns_rexp,
+    # "G2PA.REXP": parse_g2pa_rexp,
+    # "G3NS.UW": parse_g3ns_uw,
+    # "G3PA.UW": parse_g3pa_uw,
 }
 COL_KALLISTO_MAP = 'kallisto_fn'
 # -----------------------------------------------------------------------------
@@ -455,7 +572,11 @@ def main(meta_file, norm_file, counts_col_names_file, extra_file, method_key, ou
     # Names from the metadata tables to ignore when mapping to kallisto filenames
     ignore = [
         'REXP1LFeA','G2PA.S18C1.15m.0_2um.C','G3PA.UW6.unstranded.abundance.tsv.gz', 
-        'G3PA.UW58.unstranded.abundance.tsv.gz', 'G3PA.UW18.unstranded.abundance.tsv.gz'
+        'G3PA.UW58.unstranded.abundance.tsv.gz', 'G3PA.UW18.unstranded.abundance.tsv.gz',
+        'G3PA.diel.S4C4.C.unstranded.abundance.tsv.gz', 
+        'G3PA.diel.S4C13.A.unstranded.abundance.tsv.gz', 
+        'G3PA.diel.S4C21.A.unstranded.abundance.tsv.gz', 
+        'G3PA.diel.S4C8.A.unstranded.abundance.tsv.gz',
     ]
 
     df_count_cols = pd.read_csv(counts_col_names_file, header=None)

@@ -1,11 +1,29 @@
+def filter_6tr_rows(t, group_col, order_cols, ascending):
+    order_exprs = [
+        t[col].asc() if asc else t[col].desc()
+        for col, asc in zip(order_cols, ascending)
+    ]
+
+    w = ibis.window(
+        group_by=t[group_col],
+        order_by=order_exprs,
+    )
+    return (
+        t
+        .mutate(rn=ibis.row_number().over(w))
+        .filter(lambda t: t.rn == 0)
+        .drop("rn")
+    )
+
+
 rule get_tax_lineage:
     input:
         fn_tax = lambda w: get_fn_tax(w.batch)
     output:
-        fn_tax_lin = temp(fmt_tax_lin)
-    threads: 21
+        fn_tax_lin = fmt_tax_lin
+    threads: 8
     resources:
-        mem="350G"
+        mem="50G"
     run:
         # Set up ibis
         con = ibis.duckdb.connect(memory_limit=resources.mem, threads=threads)
@@ -15,9 +33,10 @@ rule get_tax_lineage:
         t = ibis.read_csv(
             input.fn_tax, 
             header=False, 
-            names=config['cols_diamond'],
+            names=config['keys_diamond']['cols'],
             table_name=table_name
             )
+        print('COL T',t.columns)
         # t = t.limit(100)
         # Get unique taxids
         print('Getting unique taxa')
@@ -41,9 +60,9 @@ rule get_tax_lineage:
                     lin_full = None
                 if lin_full is not None:
                     dict_t_n = ncbi.get_taxid_translator(lin_full)
-                    ranks = {r:t for t,r in ncbi.get_rank(lin_full).items()}
+                    ranks = {r:tid for tid,r in ncbi.get_rank(lin_full).items()}
                     lin_t = [ranks.get(c, '') for c in cols_lin]
-                    lin_nm = [dict_t_n.get(t, '') for t in lin_t]
+                    lin_nm = [dict_t_n.get(tid, '') for tid in lin_t]
                     for col, nm in zip(cols_lin, lin_nm):
                         dict_col_tax_nm[col][tax] = nm
                         dict_col_nms[col].append(nm)
@@ -60,12 +79,13 @@ rule get_tax_lineage:
             case_branches = []
             for tax, nm in dict_tax_nm.items():
                 case_branches.append((t[taxid_key] == tax, nm))
-            cases_expr = ibis.cases(*case_branches, else_='')
+            cases_expr = ibis.cases(*case_branches, else_='').cast("string")
             dict_col_expr[col] = cases_expr
         t_mapped = t.mutate(**dict_col_expr)
+        print('COL EXPR',t_mapped.columns)
         # Set up taxid enum type
         def create_enum_type(enum_type, vals):
-            enum_vals = "', '".join([str(t) for t in vals])
+            enum_vals = "', '".join([str(v) for v in vals])
             enum_vals = "('" + enum_vals + "')"
             # with open(f'enumvals_{enum_type}.txt','w') as f:
             #     f.write(enum_vals)
@@ -76,7 +96,7 @@ rule get_tax_lineage:
         create_enum_type(enum_type, taxa_unique)
         # Set up sql cast 
         join_key = config['keys_diamond']['join']
-        sql_cast = f"SELECT {join_key}, "
+        sql_cast = f"SELECT {join_key}, {config['keys_diamond']['col_eval']}, "
         sql_cast += f"{taxid_key}::{enum_type} as {taxid_key}, "
         dict_col_caseexpr = {}
         # Set up tax name enum types and add to cast statement
@@ -98,10 +118,11 @@ rule get_tax_lineage:
                 )
             # print(f'Creating enum type {enum_type}')
             create_enum_type(enum_type, vals_sub)
-            sql_cast += f"{col}::{enum_type} as {col}, "
+            sql_cast += f"NULLIF({col}, '')::{enum_type} as {col}, "
         # substitute quotation marks in columns
         if dict_col_caseexpr:
             t_mapped = t_mapped.mutate(**dict_col_caseexpr)
+        print('COL CASE',t_mapped.columns)
         # TODO Set up a column with the full lineage as a string
         # Mutate columns to enum categories
         alias_ibis = 'lifetheuniverseandeverything'
@@ -110,6 +131,7 @@ rule get_tax_lineage:
         dict_strcast = {col: 'string' for col in colstrcast}
         t_mapped = t_mapped.cast(dict_strcast)
         t_cat = t_mapped.alias(alias_ibis).sql(sql_cast)
+        print('COL ALIAS',t_cat.columns)
         # t_mapped = t_mapped.mutate(
         #     **{
         #         col: t_mapped[col].cast(enum_type) 
@@ -117,11 +139,17 @@ rule get_tax_lineage:
         #     }
         # )
         # remove frame selection from tail end of string
-        t_select = t_cat.mutate(
-            **{join_key: t_cat[join_key].re_replace(r'_\d+$', '')}
+        t_cat = t_cat.mutate(**{
+            config['keys_diamond']['col_6tr']: t_cat[join_key],
+            join_key: t_cat[join_key].re_replace(r'_\d+$', '')
+        })
+        print('COL 6TR',t_cat.columns)
+        # remove duplicates for join key, selecting frame with best KO hit
+        t_cat = filter_6tr_rows(
+            t_cat, join_key, [config['keys_diamond']['col_eval']], [True]
         )
         # Check for empty string in 
         # Write to parquet
         print('Writing to file')
-        t_select.to_parquet(output.fn_tax_lin)
+        t_cat.to_parquet(output.fn_tax_lin)
 

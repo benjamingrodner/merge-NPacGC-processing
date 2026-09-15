@@ -1,30 +1,27 @@
 #!/usr/bin/env bash
 
-# --- SLURM DIRECTIVES FOR THE MASTER SNAKEMAKE JOB ---
-# This job runs the Snakemake orchestrator, not the individual rules.
-
 # Set the job name
 #SBATCH --job-name=snakemake_master
 
 # Request one core for the master process
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=10
+#SBATCH --cpus-per-task=8
 
 # Set the maximum time the master job can run (e.g., 1 hour, or until the workflow finishes)
-#SBATCH --time=01:00:00
+#SBATCH --time=12:00:00
 
 # Set the partition/queue to use
 #SBATCH --partition=main
 
 # Set the memory for the master process
-#SBATCH --mem=400G
+#SBATCH --mem=300G
 
 # Redirect the master job's stdout and stderr to a file
 #SBATCH --output=slurm_logs/snakemake_master.%j.out
 #SBATCH --error=slurm_logs/snakemake_master.%j.err
 
 IMAGE=docker://benjamingrodner/get_metat_dicts
-SNAKEFILE=/scratch/bgrodner/repo-armbrust-metat-search/Snakefile_big_tables
+SNAKEFILE=workflow/Snakefile
 apptainer run \
     --no-home \
     --bind /mnt/nfs/projects/armbrust-metat \
@@ -33,11 +30,14 @@ apptainer run \
     snakemake \
         --snakefile $SNAKEFILE \
         --configfile config.yaml \
-        --jobs $SLURM_CPUS_PER_TASK \
+        --jobs 32 \
+        --rerun-triggers mtime \
         --rerun-incomplete \
         -p
+        # -R results/tmp/tax_lineage/g1-st-am-pa-tax_lineage.parquet \
+        # -R results/tmp/merge_counts/g2-st-am-pa-merge_counts.parquet \
+        # --jobs $SLURM_CPUS_PER_TASK \
         # --unlock \
-        # --rerun-triggers mtime \
 
         # --latency-wait 60 \
         # --resources mem_gb=200 \
